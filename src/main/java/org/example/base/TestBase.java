@@ -2,6 +2,7 @@ package org.example.base;
 
 import io.github.cdimascio.dotenv.Dotenv;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -31,7 +32,8 @@ public class TestBase {
     public void init() {
         ChromeOptions options = new ChromeOptions();
         // Uncomment to check using ChromeDriver
-        //driver = new ChromeDriver(options);
+//        driver = new ChromeDriver(options);
+
         try {
             driver = new RemoteWebDriver(
                     new URL("http://localhost:4444"),
@@ -87,5 +89,9 @@ public class TestBase {
 
     public static void waitUntilSpinnerDisappear() {
         wait.until(ExpectedConditions.invisibilityOfElementLocated(By.className("preloader")));
+    }
+
+    public static void autoScroll(WebElement element) {
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({block: 'center'});", element);
     }
 }
