@@ -69,6 +69,10 @@ public class PeriplusAddToCartTest extends TestBase {
                 }
             }
             if (!hasFound) {
+                System.out.println(addedBook.getTitle());
+                for (CartProduct cartProduct : cartModel.getCartProducts()) {
+                    System.out.println(cartProduct.getName());
+                }
                 throw new NoSuchElementException("There is a book that is not found in the cart!");
             }
         }
@@ -81,7 +85,7 @@ public class PeriplusAddToCartTest extends TestBase {
     @Test
     public void positiveAddToExistingCart() {
         book = home.navigateToBookList();
-        book.addBookToCart(3);
+        book.addBookToCart(5);
         cart = book.navigateToCartPage();
         Cart cartModel = cart.getCart();
         List<Book> addedBooks = book.getAddedBooks();
@@ -117,9 +121,6 @@ public class PeriplusAddToCartTest extends TestBase {
 
     @AfterMethod
     public void tearDown() {
-        if (cart != null) {
-            cart.emptyCart();
-        }
         quit();
     }
 }
