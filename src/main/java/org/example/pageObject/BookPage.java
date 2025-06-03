@@ -4,6 +4,7 @@ import org.example.Utils;
 import org.example.base.TestBase;
 import org.example.model.Book;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -54,6 +55,7 @@ public class BookPage extends TestBase {
         waitUntilElementClickable(book);
         actionMoveToElement(book);
         WebElement addToCardButton = book.findElement(addToCardButtonLocator);
+        autoScroll(addToCardButton);
         addToCardButton.click();
     }
 

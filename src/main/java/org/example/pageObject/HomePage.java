@@ -22,6 +22,7 @@ public class HomePage extends TestBase {
 
     public CartPage navigateToCart() {
         WebElement cartButton = waitUntilElementClickable(cartLocator);
+        autoScroll(cartButton);
         cartButton.click();
         return new CartPage(this.driver);
     }
@@ -30,6 +31,7 @@ public class HomePage extends TestBase {
         WebElement category = waitUntilElementClickable(categoryLocator);
         actionMoveToElement(category);
         WebElement book = waitUntilElementClickable(bookLocator);
+        autoScroll(book);
         book.click();
         return new BookPage(this.driver);
     }

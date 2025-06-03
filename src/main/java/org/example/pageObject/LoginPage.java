@@ -28,6 +28,7 @@ public class LoginPage extends TestBase {
 
     public HomePage submitLogin() {
         WebElement loginButton = waitUntilElementVisible(loginButtonLocator);
+        autoScroll(loginButton);
         loginButton.click();
         return new HomePage(driver);
     }

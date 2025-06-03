@@ -33,6 +33,7 @@ public class CartPage extends TestBase {
                 List<WebElement> removeButtons = waitUntilAllElementVisible(removeButtonLocator);
                 waitUntilElementClickable(removeButtons.get(0));
                 actionMoveToElement(removeButtons.get(0));
+                autoScroll(removeButtons.get(0));
                 removeButtons.get(0).click();
             }
 
@@ -45,6 +46,7 @@ public class CartPage extends TestBase {
 
     public HomePage navigateToHomePage() {
         WebElement homePage = waitUntilElementClickable(homePageLocator);
+        autoScroll(homePage);
         homePage.click();
         return new HomePage(driver);
     }
