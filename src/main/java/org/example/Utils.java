@@ -39,4 +39,11 @@ public class Utils {
 
         return productCardName;
     }
+
+    public static long formatPrice(String price) {
+        String[] priceSplit = price.split(" ");
+        String priceNumber = priceSplit[1].replace(",", "");
+
+        return Long.parseLong(priceNumber);
+    }
 }
