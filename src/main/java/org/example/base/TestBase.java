@@ -7,9 +7,11 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.net.URL;
 import java.time.Duration;
 import java.util.List;
 
@@ -28,7 +30,18 @@ public class TestBase {
 
     public void init() {
         ChromeOptions options = new ChromeOptions();
-        driver = new ChromeDriver(options);
+        // Uncomment to check using ChromeDriver
+        //driver = new ChromeDriver(options);
+        try {
+            driver = new RemoteWebDriver(
+                    new URL("http://localhost:4444/wd/hub"),
+                    options
+            );
+        }
+
+        catch (Exception e) {
+            System.out.println("Setup failed!");
+        }
         actions = new Actions(driver);
 
         wait = new WebDriverWait(driver, Duration.ofSeconds(waitDuration));
